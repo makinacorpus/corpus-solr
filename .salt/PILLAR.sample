@@ -1,0 +1,49 @@
+#
+# This file contains default values which are used
+# by the salt states deploying your project.
+# you may copy them to your relevant PILLAR file
+# before editing them.
+# If you need to add variables, this is where to begin.
+# Please keep defaults in there, but real passwords
+# must be putted inside pillar
+#
+# replace project_name in your pillar by
+# the current projectname
+# you can also merge parts of this file
+# with the relevant pillar
+#
+# think that dicts are updated/merged with default
+# but lists are overidden
+makina-projects.projectname:
+  data:
+    nginx_upstream: 'salt://makina-projects/{name}/files/nginx_upstream'
+    nginx_vhost: 'salt://makina-projects/{name}/files/nginx_vhost'
+    domain: foo.example.net
+    allow:
+      - all
+    start_cmd: 'java -jar start.jar'
+    start_args: []
+    context: solr
+    scheme: ''
+    port: 8983
+    host: ''
+    version: '4'
+    jetty: '{data_root}/solr/root'
+    sdata: '{jetty}/solr'
+    sroot: '{data_root}/solr'
+    fv: '4.10.0'
+    jetty_conf: 'salt://makina-projects/{name}/files/jetty'
+    solr_conf:  'salt://makina-projects/{name}/files/solr'
+    # attention, rsync args !
+    bundle_sync: ['start.jar',  'logs/', 'lib/', 'webapps/', 'solr-webapp/']
+    bundle_top_sync: ['contrib', 'dist']
+    cores:
+      - sample: 'salt://makina-projects/{name}/files/sample_core'
+      - drupal: 'salt://makina-projects/{name}/files/drupal_core'
+    users:
+      # override at least this first password as it is the global solr administarator
+      # or set this to an empty list to disable auth.
+      - solradmin: {password: sample_pw}
+      - sampleadmin: {cores: [sample], password: sample_pw}
+      - drupaladmin: {cores: [drupal], password: sample_pw}
+# vim:set ft=yaml:
