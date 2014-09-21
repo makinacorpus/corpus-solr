@@ -1,5 +1,5 @@
 ===========================================================================
-Exemple of a generic tilestream(nodejs) deployment with salt/makina-states
+Exemple of a generic solr(jetty) deployment with salt/makina-states
 ===========================================================================
 
 .. contents::
@@ -47,8 +47,8 @@ USE/Install With makina-states
 
 - You can also run just specific step(s)::
 
-      salt mc_project.deploy only=install,fixperms only_steps=000_whatever
-      salt mc_project.deploy only=install,fixperms only_steps=000_whatever,001_else
+      salt mc_project.deploy <proj> only=install,fixperms only_steps=000_whatever
+      salt mc_project.deploy <proj> only=install,fixperms only_steps=000_whatever,001_else
 
 - If you want to commit in prod and then push back from the remote computer, remember
   to push on the right branch, eg::
