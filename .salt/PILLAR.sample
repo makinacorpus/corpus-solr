@@ -41,7 +41,6 @@ makina-projects.projectname:
     cores:
       - sample: 'salt://makina-projects/{name}/files/sample_core'
       - drupal: 'salt://makina-projects/{name}/files/drupal_core'
-      
     # those lines are added as allow <> in nginx configuration file to restrict acces based on IP
     allow:
       - all
