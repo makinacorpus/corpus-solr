@@ -30,7 +30,7 @@ makina-projects.projectname:
     sroot: '{data_root}/solr'
     # solr version defs
     version: '4'
-    fv: '4.10.0'
+    fv: '4.10.1'
     # attention, rsync args !
     bundle_sync: ['start.jar',  'logs/', 'lib/', 'webapps/', 'solr-webapp/']
     bundle_top_sync: ['contrib', 'dist']
