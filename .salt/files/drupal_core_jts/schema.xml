@@ -323,7 +323,7 @@
     <fieldType name="point" class="solr.PointType" dimension="2" subFieldType="tdouble"/>
 
     <!-- A specialized field for geospatial search. If indexed, this fieldType must not be multivalued. -->
-    <!-- fieldType name="location" class="solr.LatLonType" subFieldType="tdouble"/> -->
+    <!-- <fieldType name="location" class="solr.LatLonType" subFieldType="tdouble"/> -->
     <fieldType name="location_rpt"   class="solr.SpatialRecursivePrefixTreeFieldType"
        spatialContextFactory="com.spatial4j.core.context.jts.JtsSpatialContextFactory"
        distErrPct="0.025"

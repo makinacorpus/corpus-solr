@@ -60,7 +60,7 @@ solr-dist-top-conf-{{i}}:
 {{cfg.name}}-solr-extra-libs:
   file.recurse:
     - source: salt://makina-projects/{{cfg.name}}/files/lib/
-    - name: {{data.jetty}}/lib
+    - name: {{data.jetty}}/lib/
     - include_empty: true
     - include_pat: '*'
     - clean: false
