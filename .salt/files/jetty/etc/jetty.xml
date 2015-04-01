@@ -5,7 +5,7 @@
 
 
 # managed by salt - do not edit
-{% set data = salt['mc_utils.json_load'](data) %}
+{% set data = salt['mc_project.get_configuration'](project).data %}
 =============================================================== -->
 <!-- Configure the Jetty Server                                      -->
 <!--                                                                 -->

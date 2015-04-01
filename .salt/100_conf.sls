@@ -15,8 +15,7 @@ jetty-conf:
     - dir_mode: 0770
     - file_mode: 0660
     - defaults:
-        data: |
-              {{sdata}}
+        project: "{{cfg.name}}"
 
 solr-global_conf:
   file.recurse:
@@ -31,8 +30,7 @@ solr-global_conf:
     - dir_mode: 0770
     - file_mode: 0660
     - defaults:
-        data: |
-              {{sdata}}
+        project: "{{cfg.name}}"
 
 {% for core_data in data.cores %}
 {% for core_name, core_conf in core_data.items() %}
@@ -50,7 +48,7 @@ solr-core-{{core_name}}:
     - dir_mode: 0770
     - file_mode: 0660
     - defaults:
-        data: |
-              {{sdata}}
+        project: "{{cfg.name}}"
+        core: "{{core_name}}"
 {% endfor %}
 {% endfor %}

@@ -24,5 +24,6 @@ echo restart:
 {{ nginx.virtualhost(
       domain=data.domain,
       cfg=cfg,
+      vhost_basename="solr-"+cfg.name,
       vh_top_source=data.nginx_upstream,
       vh_content_source=data.nginx_vhost) }}

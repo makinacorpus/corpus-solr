@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
   <!-- ===================================================================== -->
-{% set data = salt['mc_utils.json_load'](data) %}
+{% set data = salt['mc_project.get_configuration'](project).data %}
   <!-- This file contains the default descriptor for web applications.       -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!-- The intent of this descriptor is to include jetty specific or common  -->

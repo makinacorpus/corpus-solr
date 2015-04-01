@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-{% set data = salt['mc_utils.json_load'](data) %}
+{% set data = salt['mc_project.get_configuration'](project).data %}
 <!--
 
 

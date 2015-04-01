@@ -23,6 +23,8 @@ solr-{{ version }}:
     - user: {{cfg.user}}
     - watch:
       - file: solr-{{version}}
+    - require_in:
+      - file: {{cfg.name}}-solr-extra-libs
     - cwd: {{ data.sroot}}
     - onlyif: test ! -e '{{ data.sroot}}/solr-{{ fv }}-download'
     - name: >
@@ -39,6 +41,8 @@ solr-jetty-bundle-{{i}}:
             rsync -Aa \
               "{{ data.sroot}}/solr-{{fv}}/example/{{i}}" \
                "{{data.jetty}}/{{i}}"
+    - require_in:
+      - file: {{cfg.name}}-solr-extra-libs
     - user: {{cfg.user}}
 {% endfor %}
 
@@ -48,6 +52,24 @@ solr-dist-top-conf-{{i}}:
     - name: {{data.sroot}}/{{i}}
     - require:
       - cmd: solr-{{ version }}
+    - require_in:
+      - file: {{cfg.name}}-solr-extra-libs
     - target: "{{ data.sroot}}/solr-{{fv}}/{{i}}"
 {% endfor %}
 
+{{cfg.name}}-solr-extra-libs:
+  file.recurse:
+    - source: salt://makina-projects/{{cfg.name}}/files/lib/
+    - name: {{data.jetty}}/lib
+    - include_empty: true
+    - include_pat: '*'
+    - clean: false
+    - force: true
+    - makedirs: true
+    - template: jinja
+    - user: {{cfg.user}}
+    - group: {{cfg.group}}
+    - dir_mode: 0770
+    - file_mode: 0660
+    - defaults:
+        project: "{{cfg.name}}"
